@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Connect | Your Name</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(160deg, #000000, #1a002e);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
+
+    /* 霓虹背景特效 */
+    .neon-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, #ff00ff, transparent 60%), 
+                  radial-gradient(circle at 80% 50%, #00f5ff, transparent 60%);
+      filter: blur(200px);
+      opacity: 0.3;
+      animation: pulse 6s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    /* 導覽列 */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 30px;
+      z-index: 2;
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #00f5ff;
+      text-shadow: 0 0 10px #00f5ff;
+      font-size: 1.2em;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+    }
+
+    /* 主內容 */
+    .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 25px #00f5ff, 0 0 40px #ff00ff;
+      margin-bottom: 40px;
+    }
+
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 800px;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #00f5ff;
+      border-radius: 20px;
+      padding: 30px 40px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 0 20px #00f5ff40;
+      transition: 0.4s;
+      font-family: 'Share Tech Mono', monospace;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      border-color: #ff00ff;
+      box-shadow: 0 0 30px #ff00ff60;
+    }
+
+    .contact-card i {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #00f5ff;
+      text-shadow: 0 0 15px #00f5ff;
+      transition: 0.3s;
+    }
+
+    .contact-card:hover i {
+      color: #ff00ff;
+      text-shadow: 0 0 20px #ff00ff;
+    }
+
+    .contact-card a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 8px;
+      font-size: 1.1em;
+      transition: 0.3s;
+    }
+
+    .contact-card a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    marquee {
+      color: white;
+      font-size: 22px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: black;
+      padding: 10px 0;
+    }
+
+    /* Icon font (Font Awesome) */
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+  </style>
+</head>
+<body>
+  <div class="neon-bg"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="interests.html">Interests</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html" style="color:#a000ff;text-shadow:0 0 20px #a000ff;">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h1>Connect with Me ⚡</h1>
+
+    <div class="contacts">
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <div>Email</div>
+        <a href="mailto:a053199ww@gmail.com">a053199ww@gmail.com</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fab fa-instagram"></i>
+        <div>Instagram</div>
+        <a href="https://instagram.com/dr_oxo" target="_blank">@dr_oxo</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fab fa-github"></i>
+        <div>GitHub</div>
+        <a href="https://github.com/yourname" target="_blank">github.com/yourname</a>
+      </div>
+
+      <div class="contact-card">
+        <i class="fab fa-discord"></i>
+        <div>Discord</div>
+        <a href="#">FlowoF#2622</a>
+      </div>
+    </div>
+  </div>
+
+  <marquee behavior="scroll" direction="right" scrollamount="8">
+    ░ 聯絡我 ░ 聯絡我 ░ ░ 聯絡我 ░ 聯絡我 ░  ░ 聯絡我 ░ 聯絡我 ░
+  </marquee>
+</body>
+</html>
