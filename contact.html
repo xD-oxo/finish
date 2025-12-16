@@ -14,7 +14,8 @@
       background: linear-gradient(160deg, #000000, #1a002e);
       color: #fff;
       font-family: 'Orbitron', sans-serif;
-      overflow: hidden;
+      overflow-y: auto; /* 必改：允許垂直滾動 */
+      overflow-x: hidden;
     }
 
     /* 霓虹背景特效 */
@@ -27,6 +28,8 @@
       filter: blur(200px);
       opacity: 0.3;
       animation: pulse 6s infinite alternate;
+      position: fixed; /* 固定背景 */
+      z-index: 0;
     }
 
     @keyframes pulse {
@@ -42,6 +45,7 @@
       padding: 30px;
       z-index: 2;
       position: relative;
+      flex-wrap: wrap; /* 必改 */
     }
 
     nav a {
@@ -65,8 +69,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 80vh;
+      /* height: 80vh;  移除固定高度，改用 min-height */
+      min-height: 80vh;
+      height: auto;
       text-align: center;
+      padding-bottom: 80px; /* 避免被下方跑馬燈遮住 */
     }
 
     h1 {
@@ -81,6 +88,7 @@
       justify-content: center;
       gap: 30px;
       max-width: 800px;
+      padding: 0 20px; /* 增加左右 padding */
     }
 
     .contact-card {
@@ -93,6 +101,7 @@
       box-shadow: 0 0 20px #00f5ff40;
       transition: 0.4s;
       font-family: 'Share Tech Mono', monospace;
+      box-sizing: border-box; /* 確保 padding 不撐大 */
     }
 
     .contact-card:hover {
@@ -121,6 +130,7 @@
       margin-top: 8px;
       font-size: 1.1em;
       transition: 0.3s;
+      word-break: break-all; /* 避免長網址撐爆手機版面 */
     }
 
     .contact-card a:hover {
@@ -137,10 +147,18 @@
       width: 100%;
       background: black;
       padding: 10px 0;
+      z-index: 10; /* 確保在最上層 */
     }
 
     /* Icon font (Font Awesome) */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+    /* RWD 手機版調整 */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2em; margin-top: 20px; }
+      nav { gap: 15px; padding: 20px; }
+      .contact-card { width: 100%; max-width: 300px; } /* 手機版卡片寬度調整 */
+    }
   </style>
 </head>
 <body>

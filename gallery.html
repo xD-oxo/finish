@@ -25,6 +25,7 @@
       opacity: 0.2; /* ✅ 統一亮度 */
       animation: floatBG 12s infinite alternate ease-in-out;
       z-index: 0;
+      position: fixed; /* 讓背景固定 */
     }
 
     @keyframes floatBG {
@@ -43,7 +44,10 @@
       top: 0;
       left: 0;
       width: 100%;
-
+      box-sizing: border-box; /* 避免 padding 撐爆 */
+      background: rgba(0,0,0,0.5); /* 增加一點底色確保在手機上文字清楚 */
+      backdrop-filter: blur(5px);
+      flex-wrap: wrap; /* 必改 */
     }
 
     nav a {
@@ -77,9 +81,16 @@
       z-index: 2;
     }
 
-.gallery video:last-child {
-  transform: translateY(-280px); /* ⬅️ 往上移，數值可自行微調 */
-}
+    .gallery video:last-child {
+      transform: translateY(-280px); /* ⬅️ 往上移，數值可自行微調 */
+    }
+    
+    /* RWD 手機版修正：取消特殊位移，避免手機排版混亂 */
+    @media (max-width: 1200px) {
+        .gallery video:last-child {
+            transform: none;
+        }
+    }
 
     .gallery img {
       width: 100%;
@@ -94,12 +105,12 @@
     }
 
     .gallery video {
-  width: 100%;
-  border-radius: 15px;
-  transition: 0.5s;
-  box-shadow: 0 0 15px #00f5ff;
-  transform-origin: center center; /* ⬅️ 這行讓放大以中心為基準 */
-}
+      width: 100%;
+      border-radius: 15px;
+      transition: 0.5s;
+      box-shadow: 0 0 15px #00f5ff;
+      transform-origin: center center; /* ⬅️ 這行讓放大以中心為基準 */
+    }
 
     footer {
       text-align: center;
@@ -109,6 +120,13 @@
       text-shadow: 0 0 5px #00f5ff;
       z-index: 2;
       position: relative;
+    }
+
+    /* RWD 手機版調整 */
+    @media (max-width: 768px) {
+      .gallery { gap: 30px; padding: 20px; }
+      h1 { margin-top: 150px; font-size: 2em; } /* 增加上距以免被折行的 nav 擋住 */
+      nav { gap: 15px; padding: 15px; }
     }
   </style>
 </head>

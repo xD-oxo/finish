@@ -13,7 +13,8 @@
       background: radial-gradient(circle at center, #1d1d1d, #000000);
       color: #fff;
       font-family: 'Orbitron', sans-serif;
-      overflow: hidden;
+      overflow: hidden; /* index 頁面內容少，維持 hidden 沒問題 */
+      display: flex; /* 修正原本 body flex 屬性未完整的問題 */
       flex-direction: column;
       justify-content: center;
     }
@@ -42,7 +43,11 @@
       gap: 40px;
       padding: 30px;
       z-index: 2;
-      position: relative;
+      position: absolute; /* 改為 absolute 以便在 RWD 下更好控制 */
+      top: 0;
+      width: 100%;
+      box-sizing: border-box; /* 確保 padding 不會撐爆寬度 */
+      flex-wrap: wrap; /* 必改：讓手機版導覽列可換行 */
     }
 
     nav a {
@@ -59,19 +64,17 @@
     }
 
     /* 中央內容 */
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 3;
-}
-
+    .center {
+      position: relative; /* 配合 body flex 置中，取消 absolute 避免手機版跑版 */
+      text-align: center;
+      z-index: 3;
+      padding: 0 20px;
+    }
 
     h1 {
       font-size: 4em;
       text-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff;
+      margin: 0; /* 重置 margin */
     }
 
     h2 {
@@ -85,6 +88,13 @@
     @keyframes glow {
       from { text-shadow: 0 0 10px #b900ec; }
       to { text-shadow: 0 0 25px #00f5ff; }
+    }
+
+    /* RWD 手機版調整 */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5em; } /* 手機標題縮小 */
+      h2 { font-size: 1.2em; }
+      nav { gap: 15px; padding: 20px; } /* 縮小導覽列間距 */
     }
     
   </style>
@@ -104,7 +114,6 @@
     <h1>Hella bro, I'm <span style="color:#00f5ff;">Yi Huan</span></h1>
     <h2>Welcome to my world ⚡</h2>
   </div>
-
 
 </body>
 </html>
