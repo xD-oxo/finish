@@ -5,33 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>發現我了</title>
   <style>
-    /* ============================================== */
-            /* 自訂滑鼠游標設定                 */
-            /* ============================================== */
-            
-            /* 1. 設定「一般狀態」的滑鼠 */
-            html, body {
-                /* url('路徑') 是你的圖片，auto 是備用(如果圖跑不出來就用預設) */
-                cursor: url('nor.png'), auto; 
-            }
-
-            /* 2. 設定「移到連結上」的滑鼠 (例如變更手指或變紅色) */
-            /* 如果你想要連結也有不同圖案，可以準備另一張 cursor-hover.png */
-            a, button, .button, .image, .nav-arrow {
-                cursor: url('tou.png'), pointer; /* 這裡可以換成另一張圖 */
-            }
+    /* 【必改重點】@import 一定要放在 CSS 的最最最上面，字體才會生效！ */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
+    /* ============================================== */
+    /* 自訂滑鼠游標設定                 */
+    /* ============================================== */
+    html, body {
+        cursor: url('nor.png'), auto; 
+    }
+    a, button, .button, .image, .nav-arrow {
+        cursor: url('tou.png'), pointer;
+    }
 
     body {
       margin: 0;
       height: 100vh;
       background: radial-gradient(circle at center, #1d1d1d, #000000);
       color: #fff;
-      font-family: 'Orbitron', sans-serif;
-      overflow: hidden; /* index 頁面內容少，維持 hidden 沒問題 */
-      display: flex; /* 修正原本 body flex 屬性未完整的問題 */
+      font-family: 'Orbitron', sans-serif; /* 字體設定 */
+      overflow: hidden;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
+      
+      /* 讓內容從上面開始排，避免導覽列被擠下來 */
+      justify-content: flex-start; 
     }
 
     /* 霓虹背景特效 */
@@ -58,11 +56,8 @@
       gap: 40px;
       padding: 30px;
       z-index: 2;
-      position: absolute; /* 改為 absolute 以便在 RWD 下更好控制 */
-      top: 0;
-      width: 100%;
-      box-sizing: border-box; /* 確保 padding 不會撐爆寬度 */
-      flex-wrap: wrap; /* 必改：讓手機版導覽列可換行 */
+      position: relative;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -80,16 +75,19 @@
 
     /* 中央內容 */
     .center {
-      position: relative; /* 配合 body flex 置中，取消 absolute 避免手機版跑版 */
+      position: relative;
       text-align: center;
       z-index: 3;
       padding: 0 20px;
+      
+      /* 自動分配上下空間，讓文字垂直置中 */
+      margin: auto; 
     }
 
     h1 {
       font-size: 4em;
       text-shadow: 0 0 20px #00f5ff, 0 0 40px #00f5ff;
-      margin: 0; /* 重置 margin */
+      margin: 0;
     }
 
     h2 {
@@ -107,9 +105,9 @@
 
     /* RWD 手機版調整 */
     @media (max-width: 768px) {
-      h1 { font-size: 2.5em; } /* 手機標題縮小 */
+      h1 { font-size: 2.5em; }
       h2 { font-size: 1.2em; }
-      nav { gap: 15px; padding: 20px; } /* 縮小導覽列間距 */
+      nav { gap: 15px; padding: 20px; }
     }
     
   </style>
